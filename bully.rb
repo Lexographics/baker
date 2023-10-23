@@ -51,12 +51,16 @@ class Config
 
   def load_config
     return if not File.exists?("./bully_config.yml")
-
     data = YAML.load_file("./bully_config.yml")
-    puts data.inspect
 
     if data["extension"]
       @extension = data["extension"]
+    end
+    if data["namespace"]
+      @namespace = data["namespace"]
+    end
+    if data["dir"]
+      @dir = data["dir"]
     end
   end
 
