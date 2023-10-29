@@ -100,7 +100,7 @@ def main
 end
 
 def visit_dir dir
-  Dir.foreach($cfg.dir) do |filename|
+  Dir.foreach(dir) do |filename|
     next if filename == '.' or filename == '..'
     next if ["." + $cfg.extension].include? File.extname filename
 
@@ -108,7 +108,7 @@ def visit_dir dir
 
     if File.directory?(path)
       visit_dir path
-      return
+      next
     end
   
     if File.file?(path)
