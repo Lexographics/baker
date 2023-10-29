@@ -26,7 +26,7 @@ require 'yaml'
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #  SOFTWARE.
 
-$version = "1"
+$version = "2"
 
 class Config
   attr_accessor :extension
@@ -96,12 +96,24 @@ def main
     exit 1
   end
 
+  visit_dir $cfg.dir
+end
+
+def visit_dir dir
   Dir.foreach($cfg.dir) do |filename|
     next if filename == '.' or filename == '..'
     next if ["." + $cfg.extension].include? File.extname filename
 
+    path = File.join(dir, filename)
 
-    convert_file File.join($cfg.dir, filename)
+    if File.directory?(path)
+      visit_dir path
+      return
+    end
+  
+    if File.file?(path)
+      convert_file path
+    end
   end
 end
 
