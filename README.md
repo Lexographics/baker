@@ -5,12 +5,12 @@ wget-and-use tool to bake your resource into your C/C++ code
 ## Usage
 ### Downloading
 ```
-$ wget https://raw.githubusercontent.com/Lexographics/bully/main/bully.rb
+wget https://raw.githubusercontent.com/Lexographics/bully/main/bully.rb
 ```
 
 ### Running bully
 ```powershell
-$ ruby bully.rb --help
+  ruby bully.rb --help
 
   ruby bully.rb   --help, -h                prints usage
   ruby bully.rb   --version                 prints version information
@@ -29,7 +29,7 @@ Config files can be used to save configuration instead of typing them to console
 To use config file, create a file in working directory named `bully_config.yml`
 ```yml
   # example bully_config.yml file
-  extension: .h
+  extension: h
   namespace: res
   dir: res
 ```
