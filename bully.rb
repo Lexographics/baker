@@ -47,7 +47,7 @@ class Config
     puts "  ruby bully.rb   --ext {extension}         extension for generated files (default: .h)"
     puts "  ruby bully.rb   --namespace {namespace}   namespace for generated files (default: )"
     puts "  ruby bully.rb   --dir {directory}         directory to lookup resources (default: ./)"
-    puts "  ruby bully.rb   --always-generate         if present, won't check file modification dates"
+    puts "  ruby bully.rb   --always-generate         if present, will not check file modification dates"
     puts "  ruby bully.rb   --recursive               checks for resources in {dir} recursively"
     
     exit
