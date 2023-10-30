@@ -4,12 +4,12 @@ wget-and-use tool to bake your resource into your C/C++ code
 
 ## Usage
 ### Downloading
-```
+```sh
 wget https://raw.githubusercontent.com/Lexographics/bully/main/bully.rb
 ```
 
 ### Running bully
-```powershell
+```sh
   ruby bully.rb --help
 
   ruby bully.rb   --help, -h                prints usage
@@ -17,6 +17,7 @@ wget https://raw.githubusercontent.com/Lexographics/bully/main/bully.rb
   ruby bully.rb   --ext {extension}         extension for generated files (default: h)
   ruby bully.rb   --namespace {namespace}   namespace for generated files (default: )
   ruby bully.rb   --dir {directory}         directory to lookup resources (default: ./)
+  ruby bully.rb   --always-generate         if present, won't check file modification dates
 ```
 <br>
 
@@ -32,5 +33,6 @@ To use config file, create a file in working directory named `bully_config.yml`
   extension: h
   namespace: res
   dir: res
+  always_generate: false
 ```
 Note: Command line arguments will override config file
