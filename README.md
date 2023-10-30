@@ -14,7 +14,7 @@ wget https://raw.githubusercontent.com/Lexographics/bully/main/bully.rb
 
   ruby bully.rb   --help, -h                prints usage
   ruby bully.rb   --version                 prints version information
-  ruby bully.rb   --ext {extension}         extension for generated files (default: h)
+  ruby bully.rb   --ext {extension}         extension for generated files (default: .h)
   ruby bully.rb   --namespace {namespace}   namespace for generated files (default: )
   ruby bully.rb   --dir {directory}         directory to lookup resources (default: ./)
   ruby bully.rb   --always-generate         if present, won't check file modification dates
@@ -31,7 +31,7 @@ Config files can be used to save configuration instead of typing them to console
 To use config file, create a file in working directory named `bully_config.yml`
 ```yml
   # example bully_config.yml file
-  extension: h
+  extension: .h
   namespace: res
   dir: res
   always_generate: false

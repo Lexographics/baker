@@ -1,4 +1,4 @@
-extension: h
+extension: .h
 namespace: res
 dir: res
 always_generate: false

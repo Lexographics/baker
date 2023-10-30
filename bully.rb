@@ -44,7 +44,7 @@ class Config
     puts "Usage:"
     puts "  ruby bully.rb   --help, -h                prints usage"
     puts "  ruby bully.rb   --version                 prints version information"
-    puts "  ruby bully.rb   --ext {extension}         extension for generated files (default: h)"
+    puts "  ruby bully.rb   --ext {extension}         extension for generated files (default: .h)"
     puts "  ruby bully.rb   --namespace {namespace}   namespace for generated files (default: )"
     puts "  ruby bully.rb   --dir {directory}         directory to lookup resources (default: ./)"
     puts "  ruby bully.rb   --always-generate         if present, won't check file modification dates"
@@ -75,7 +75,7 @@ class Config
   end
 
   def initialize
-    @extension = "h"
+    @extension = ".h"
     @namespace = ""
     @dir = "./"
     @always_generate = false
@@ -118,7 +118,8 @@ end
 def visit_dir dir
   Dir.foreach(dir) do |filename|
     next if filename == '.' or filename == '..'
-    next if ["." + $cfg.extension].include? File.extname filename
+    next if [$cfg.extension].include? File.extname filename
+    next if filename.end_with?($cfg.extension)
 
     path = File.join(dir, filename)
 
@@ -135,7 +136,7 @@ end
 
 
 def convert_file(filename)
-  out_filename = filename + "." + $cfg.extension
+  out_filename = filename + $cfg.extension
   header_guard = out_filename.tr(".", "_").tr("*", "_").tr("-", "_").tr("/", "_") # nice
   var_name = header_guard
 
@@ -144,7 +145,7 @@ def convert_file(filename)
     generated = File.stat(out_filename).mtime.to_s
 
     if generated > res
-      puts "Skipping #{out_filename}"
+      puts "Skipping #{filename}"
       return
     end
   end
