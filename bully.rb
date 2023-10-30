@@ -33,6 +33,7 @@ class Config
   attr_accessor :namespace
   attr_accessor :dir
   attr_accessor :always_generate
+  attr_accessor :recursive
 
   def version
     puts "Bully build generator version #{$version}"
@@ -47,6 +48,7 @@ class Config
     puts "  ruby bully.rb   --namespace {namespace}   namespace for generated files (default: )"
     puts "  ruby bully.rb   --dir {directory}         directory to lookup resources (default: ./)"
     puts "  ruby bully.rb   --always-generate         if present, won't check file modification dates"
+    puts "  ruby bully.rb   --recursive               checks for resources in {dir} recursively"
     
     exit
   end
@@ -67,6 +69,9 @@ class Config
     if data["always_generate"]
       @always_generate = data["always_generate"]
     end
+    if data["recursive"]
+      @recursive = data["recursive"]
+    end
   end
 
   def initialize
@@ -74,6 +79,7 @@ class Config
     @namespace = ""
     @dir = "./"
     @always_generate = false
+    @recursive = true
 
     load_config
 
@@ -91,6 +97,8 @@ class Config
         @dir = ARGV[index + 1]
       when "--always-generate"
         @always_generate = true
+      when "--recursive"
+        @recursive = true
       end
     end
   end
@@ -114,7 +122,7 @@ def visit_dir dir
 
     path = File.join(dir, filename)
 
-    if File.directory?(path)
+    if $cfg.recursive and File.directory?(path)
       visit_dir path
       next
     end

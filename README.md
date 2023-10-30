@@ -18,6 +18,7 @@ wget https://raw.githubusercontent.com/Lexographics/bully/main/bully.rb
   ruby bully.rb   --namespace {namespace}   namespace for generated files (default: )
   ruby bully.rb   --dir {directory}         directory to lookup resources (default: ./)
   ruby bully.rb   --always-generate         if present, won't check file modification dates
+  ruby bully.rb   --recursive               checks for resources in {dir} recursively
 ```
 <br>
 
@@ -34,5 +35,6 @@ To use config file, create a file in working directory named `bully_config.yml`
   namespace: res
   dir: res
   always_generate: false
+  recursive: true
 ```
 Note: Command line arguments will override config file

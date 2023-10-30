@@ -2,3 +2,4 @@ extension: h
 namespace: res
 dir: res
 always_generate: false
+recursive: true
