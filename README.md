@@ -22,7 +22,7 @@ wget https://raw.githubusercontent.com/Lexographics/bully/main/bully.rb
 ```
 <br>
 
-- After running bully.rb, C/C++ header files will be generated from the files in the {dir}
+- After running bully.rb, C/C++ header files will be generated from the files in the {dir} 
 
 <img src="res/code.png"/>
 
